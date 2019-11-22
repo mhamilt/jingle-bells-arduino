@@ -4,6 +4,8 @@
 //--------------------------------------------------
 #include "pitches.h"
 //--------------------------------------------------
+const int audioPin = 11;
+//--------------------------------------------------
 int verse[] =
 {
   NOTE_D3, NOTE_B3, NOTE_A3, NOTE_G3,
@@ -22,6 +24,27 @@ int verse[] =
   NOTE_D4,  NOTE_D4, NOTE_D4,  NOTE_D4,
   NOTE_E4, NOTE_D4, NOTE_C4, NOTE_A3,
   NOTE_G3, 0, -1
+};
+
+//--------------------------------------------------
+int verseRhythm[] =
+{
+  4, 4, 4, 4,
+  2, 8, 8,
+  4, 4, 4, 4,
+  2, 4,
+  4, 4, 4, 4,
+  2, 2,
+  4, 4, 4, 4,
+  2,4,
+  4, 4, 4, 4,
+  2, 2,
+  4, 4, 4, 4,
+  2, 4,
+  4, 4, 4, 4,
+  4, 4, 4, 4,
+  4, 4, 4, 4,
+  1
 };
 //--------------------------------------------------
 int chorus[]
@@ -42,26 +65,6 @@ int chorus[]
   NOTE_C4, NOTE_B3,  NOTE_B3,  NOTE_B3,  NOTE_B3,
   NOTE_D4, NOTE_D4,  NOTE_C4,  NOTE_A3,
   NOTE_G3, -1
-};
-//--------------------------------------------------
-int verseRhythm[] =
-{
-  4, 4, 4, 4,
-  2, 8, 8,
-  4, 4, 4, 4,
-  2, 4,
-  4, 4, 4, 4,
-  2, 4,
-  4, 4, 4, 4,
-  1,
-  4, 4, 4, 4,
-  2, 8, 8,
-  4, 4, 4, 4,
-  2, 4,
-  4, 4, 4, 4,
-  4, 4, 4, 4,
-  4, 4, 4, 4,
-  1
 };
 //--------------------------------------------------
 int chorusRhythm[] =
@@ -86,25 +89,23 @@ int chorusRhythm[] =
 //--------------------------------------------------
 void setup()
 {
-  for (int i = 0; verse[i] != -1; ++i)
-  {
-    tone(10, verse[i], getDur(verseRhythm[i]));
-    int pauseBetweenNotes =  (getDur(verseRhythm[i]) * 4) / 3;;
-    delay(pauseBetweenNotes);
-  }
-  for (int i = 0; chorus[i] != -1; ++i)
-  {
-    tone(10, chorus[i], getDur(chorusRhythm[i]));
-    int pauseBetweenNotes = (getDur(chorusRhythm[i]) * 4) / 3;
-    delay(pauseBetweenNotes);
-    noTone(10);
-  }
+  playMelody(verse, verseRhythm);
+  playMelody(chorus, chorusRhythm);
 }
 //--------------------------------------------------
 void loop() {}
 //--------------------------------------------------
 int getDur(int dur)
 {
-  return  800u / dur;
+  return  700u / dur;
 }
 //--------------------------------------------------
+void playMelody(int melody[], int rhythm[])
+{
+  for (int i = 0; melody[i] != -1; ++i)
+  {
+    tone(audioPin, melody[i], getDur(rhythm[i]));
+    int pauseBetweenNotes =  (getDur(rhythm[i]) * 4) / 3;
+    delay(pauseBetweenNotes);
+  }
+}
