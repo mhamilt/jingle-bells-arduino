@@ -1,12 +1,5 @@
-/*
-  Jingle bells
-*/
 //--------------------------------------------------
-#include "pitches.h"
-//--------------------------------------------------
-const int audioPin = 11;
-//--------------------------------------------------
-int verse[] =
+int verseMelody[] =
 {
   NOTE_D3, NOTE_B3, NOTE_A3, NOTE_G3,
   NOTE_D3, NOTE_D3, NOTE_D3,
@@ -23,7 +16,7 @@ int verse[] =
   NOTE_E3, NOTE_C4, NOTE_B3, NOTE_A3,
   NOTE_D4,  NOTE_D4, NOTE_D4,  NOTE_D4,
   NOTE_E4, NOTE_D4, NOTE_C4, NOTE_A3,
-  NOTE_G3, 0, -1
+  NOTE_G3, 0
 };
 
 //--------------------------------------------------
@@ -36,7 +29,7 @@ int verseRhythm[] =
   4, 4, 4, 4,
   2, 2,
   4, 4, 4, 4,
-  2,4,
+  2, 4,
   4, 4, 4, 4,
   2, 2,
   4, 4, 4, 4,
@@ -44,10 +37,10 @@ int verseRhythm[] =
   4, 4, 4, 4,
   4, 4, 4, 4,
   4, 4, 4, 4,
-  1
+  1, 4
 };
 //--------------------------------------------------
-int chorus[]
+int chorusMelody[]
 {
   NOTE_B3, NOTE_B3,  NOTE_B3,
   NOTE_B3,  NOTE_B3,  NOTE_B3,
@@ -105,26 +98,3 @@ int chorusRhythm2[] =
   4, 4, 4, 4,
   2, 2
 };
-//--------------------------------------------------
-void setup()
-{
-  playMelody(verse, verseRhythm);
-  playMelody(chorus, chorusRhythm);  
-}
-//--------------------------------------------------
-void loop() {}
-//--------------------------------------------------
-int getDur(int dur)
-{
-  return  700u / dur;
-}
-//--------------------------------------------------
-void playMelody(int melody[], int rhythm[])
-{
-  for (int i = 0; melody[i] != -1; ++i)
-  {
-    tone(audioPin, melody[i], getDur(rhythm[i]));
-    int pauseBetweenNotes =  (getDur(rhythm[i]) * 4) / 3;
-    delay(pauseBetweenNotes);
-  }
-}
