@@ -31,7 +31,7 @@ You can use either a piezo buzzer
 
 ![](images/ArduinoAudioPiezo.png)
 
-Or clip straight to your headphones with jumper ire and crocodile clips.
+Or clip straight to your headphones with jumper wire and crocodile clips.
 
 ![](images/ArduinoAudio.png)
 
