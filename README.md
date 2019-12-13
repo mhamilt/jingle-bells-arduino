@@ -9,13 +9,13 @@
   `======='
 ```
 
-Tis the season, so here are a couple of ways to play James Lord Pierpont's classic an Arduino
+Tis the season, so here are a couple of ways to play James Lord Pierpont's classic on an Arduino
 
 ## Sketches
 
 ### Jingle Bells
 
-Simple, brute force way of playing through some notes. All notes of `verse[]` and `chorus[]` are stored in separate arrays. We then loop over these referencing the respective `verseRhythm[]` and `chorusRhythm[]` arrays.
+A simple, brute force way of playing through some notes. All notes of `verse[]` and `chorus[]` are stored in separate arrays. We then loop over these referencing the respective `verseRhythm[]` and `chorusRhythm[]` arrays.
 
 The melody arrays end with a `-1`, which is a cute way of figuring out when to stop when you don't necessarily know the length of a static array.
 
