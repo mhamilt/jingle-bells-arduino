@@ -5,7 +5,7 @@
 #include "pitches.h"
 #include "tune.h"
 //--------------------------------------------------
-const int audioPin = 11;
+const int audioPin = 10;
 const int bpm = 180;
 //--------------------------------------------------
 struct Tune
