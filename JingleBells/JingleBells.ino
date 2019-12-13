@@ -108,8 +108,9 @@ int chorusRhythm2[] =
 //--------------------------------------------------
 void setup()
 {
+  pinMode(audioPin, OUTPUT);
   playMelody(verse, verseRhythm);
-  playMelody(chorus, chorusRhythm);  
+  playMelody(chorus, chorusRhythm);
 }
 //--------------------------------------------------
 void loop() {}
